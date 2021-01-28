@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+
+  evaluator:
+    build:
+      context: evaluator
+      dockerfile: ./Dockerfile
+      network: host
+    image: evaluator
+    ports:
+      - "9000:9000"
+
+  dcpworker:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      network: host
+    image: dcpworker
+    command: node index
